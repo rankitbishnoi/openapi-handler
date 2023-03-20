@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "properties": {
+    "access_token": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "access_token"
+  ],
+  "title": "AccessToken",
+  "$id": "AccessToken.json"
+}

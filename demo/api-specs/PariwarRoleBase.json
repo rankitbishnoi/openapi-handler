@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "role": {
+      "type": "string"
+    },
+    "customerId": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "role"
+  ],
+  "title": "PariwarRoleBase",
+  "$id": "PariwarRoleBase.json"
+}

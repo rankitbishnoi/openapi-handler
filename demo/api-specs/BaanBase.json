@@ -1,0 +1,34 @@
+{
+  "type": "object",
+  "properties": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "fathersName": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "nickName": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "firstName",
+    "lastName",
+    "fathersName",
+    "address",
+    "nickName",
+    "amount"
+  ],
+  "additionalProperties": false,
+  "title": "BaanBase",
+  "$id": "BaanBase.json"
+}

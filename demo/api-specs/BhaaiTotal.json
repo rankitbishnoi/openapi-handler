@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "Bhaai.json"
+    }
+  ],
+  "properties": {
+    "total": {
+      "type": "number"
+    }
+  },
+  "additionalProperties": false,
+  "title": "BhaaiTotal",
+  "$id": "BhaaiTotal.json"
+}

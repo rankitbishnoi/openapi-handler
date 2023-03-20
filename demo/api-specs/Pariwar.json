@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "$ref": "PariwarBase.json"
+    }
+  ],
+  "properties": {
+    "_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "_id"
+  ],
+  "title": "Pariwar",
+  "$id": "Pariwar.json"
+}

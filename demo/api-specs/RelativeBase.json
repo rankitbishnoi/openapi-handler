@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "fathersName": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "nickName": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "number"
+    },
+    "details": {
+      "type": "string"
+    },
+    "assignTo": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "firstName",
+    "lastName",
+    "fathersName",
+    "address",
+    "nickName",
+    "phoneNumber",
+    "details",
+    "assignTo"
+  ],
+  "title": "RelativeBase",
+  "$id": "RelativeBase.json"
+}

@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "$ref": "RelativeBase.json"
+    }
+  ],
+  "properties": {
+    "_id": {
+      "type": "string"
+    },
+    "pariwarId": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "_id",
+    "pariwarId"
+  ],
+  "title": "Relative",
+  "$id": "Relative.json"
+}

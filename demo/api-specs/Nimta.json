@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "$ref": "NimtaBase.json"
+    }
+  ],
+  "properties": {
+    "_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "_id"
+  ],
+  "title": "Nimta",
+  "$id": "Nimta.json"
+}

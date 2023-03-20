@@ -1,0 +1,8 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "Baan.json"
+  },
+  "title": "BaanList",
+  "$id": "BaanList.json"
+}

@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "baanId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "amount": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "baanId",
+    "amount"
+  ],
+  "additionalProperties": false,
+  "title": "GiveBaan",
+  "$id": "GiveBaan.json"
+}

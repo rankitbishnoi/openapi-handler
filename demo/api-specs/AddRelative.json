@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "properties": {
+    "relativeIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "baanIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "relativeIds",
+    "baanIds"
+  ],
+  "additionalProperties": false,
+  "title": "AddRelative",
+  "$id": "AddRelative.json"
+}

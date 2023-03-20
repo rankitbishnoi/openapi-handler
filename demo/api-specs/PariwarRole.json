@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "$ref": "PariwarRoleBase.json"
+    }
+  ],
+  "properties": {
+    "_id": {
+      "type": "string"
+    },
+    "pariwarId": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "_id",
+    "pariwarId"
+  ],
+  "title": "PariwarRole",
+  "$id": "PariwarRole.json"
+}

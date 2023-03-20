@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "CustomerBase.json"
+    }
+  ],
+  "properties": {
+    "_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "_id"
+  ],
+  "title": "Customer",
+  "$id": "Customer.json"
+}

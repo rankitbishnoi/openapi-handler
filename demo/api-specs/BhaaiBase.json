@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "properties": {
+    "marriage": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "marriage",
+    "date"
+  ],
+  "additionalProperties": false,
+  "title": "BhaaiBase",
+  "$id": "BhaaiBase.json"
+}

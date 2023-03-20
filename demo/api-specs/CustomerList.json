@@ -1,0 +1,8 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "CustomerBase.json"
+  },
+  "title": "CustomerList",
+  "$id": "CustomerList.json"
+}

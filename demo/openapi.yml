@@ -1,0 +1,895 @@
+openapi : "3.0.3"
+info:
+  title : Baan management API overview
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/api
+paths:
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      operationId: login
+      summary: to login
+      requestBody:
+        content:
+          application/json; charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/CustomerBase'
+      responses:
+        "200":
+          description: login token
+          content:
+            applocation/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/AccessToken'
+  /auth/signup:
+    post:
+      tags:
+        - Auth
+      operationId: signup
+      summary: to sign up
+      requestBody:
+        content:
+          application/json; charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/CustomerBase'
+      responses:
+        "200":
+          description: login token
+          content:
+            applocation/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Customer'
+  /bhaai:
+    get:
+      security:
+        - JWT: [ ]
+      tags:
+        - Bhaai
+      operationId: getListBhaai
+      summary: to get all bhaais
+      responses:
+        '200':
+          description: List of Bhaai
+          content:
+            application/json; chartset=utf-8:
+              schema:
+                $ref: '#/components/schemas/BhaaiList'
+    post:
+      security:
+        - JWT: [ ]
+      tags:
+        - Bhaai
+      operationId: createBhaai
+      summary: to create bhaai
+      requestBody:
+        content:
+          application/json; charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/BhaaiBase'
+      responses:
+        "200":
+          description: New created Bhaai object
+          content:
+            applocation/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Bhaai'
+  /bhaai/{id}:
+    parameters:
+      - $ref: '#/components/parameters/ResourceId'
+    get:
+      security:
+        - JWT: [ ]
+      parameters:
+        - $ref: '#/components/parameters/Total'
+      tags:
+        - Bhaai
+      operationId: totalOfBhaai
+      summary: to total of bhaai
+      responses:
+        '200':
+          description: Get total of bhaai
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/BhaaiTotal'
+    put:
+      security:
+        - JWT: [ ]
+      tags:
+        - Bhaai
+      operationId: updateBhaaiId
+      summary: to update bhaai
+      requestBody:
+        content:
+          application/json; charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/BhaaiBase'
+      responses:
+        '200':
+          description:  Update bhaai
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Bhaai'      
+    delete:
+      security:
+        - JWT: [ ]
+      tags:
+        - Bhaai
+      operationId: deleteBhaaiById
+      summary: to delete bhaai by id
+      responses:
+        '200':
+          description: ok
+  /bhaai/{bhaaiId}/baan:
+    parameters:
+      - $ref: '#/components/parameters/BhaaiId'
+    get:
+      security:
+        - JWT: [ ]
+      tags:
+        - Baan
+      operationId: getBaan
+      summary: to get all baan in bhaai 
+      responses:
+        '200':
+          description: List of baan
+          content:
+            application/json; chartset=utf-8:
+              schema:
+                $ref: '#/components/schemas/BaanList'
+    post:
+      security:
+        - JWT: [ ]
+      tags:
+        - Baan
+      operationId: createBaan 
+      summary: to create baan
+      requestBody:
+        content:
+          application/json; charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/BaanBase'
+      responses:
+        "200":
+          description: New created Bhaai object
+          content:
+            applocation/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/BaanList'
+  /bhaai/{bhaaiId}/baan/{id}:
+    parameters:
+      - $ref: '#/components/parameters/BhaaiId'
+      - $ref: '#/components/parameters/ResourceId'
+    put:
+      security:
+        - JWT: [ ]
+      tags:
+        - Baan
+      operationId: updateBaanById
+      summary: to update baan by id
+      requestBody:
+        content:
+          application/json; charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/BaanBase'
+      responses:
+        '200':
+          description:  Update baan
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Baan'   
+    delete:
+      security:
+        - JWT: [ ]
+      tags:
+        - Baan
+      operationId: deleteBaanById
+      summary: to delete an by id 
+      responses:
+        '200':
+          description: ok
+  /search:
+    parameters:
+      - $ref: '#/components/parameters/SearchBy'
+    get:
+      security:
+        - JWT: [ ]
+      tags:
+        - Baan
+      operationId: searchBaan
+      summary: to search baan 
+      responses:
+        '200':
+          description:  Searched baan
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/BaanList'
+  /giveBaan:
+    post:
+      tags:
+        - Baan
+      operationId: giveBaan
+      summary: to give baan
+      requestBody:
+        content:
+          application/json; charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/GiveBaan'
+      responses:
+        "200":
+          description: ok
+
+  /pariwar:
+    get:
+      security:
+        - JWT: [ ]
+      tags:
+        - Pariwar
+      operationId: getListPariwar
+      summary: to get all pariwar
+      responses:
+        '200':
+          description: List of pariwar
+          content:
+            application/json; chartset=utf-8:
+              schema:
+                $ref: '#/components/schemas/PariwarList'
+    post:
+      security:
+        - JWT: [ ]
+      tags:
+        - Pariwar
+      operationId: createPariwar
+      summary: to create pariwar
+      requestBody:
+        content:
+          application/json; charset=utf-8:
+            schema:
+              $ref:  '#/components/schemas/PariwarBase'
+      responses:
+        "200":
+          description: New created pariwar object
+          content:
+            applocation/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/PariwarList'
+  /pariwar/{id}:
+    parameters:
+      - $ref: '#/components/parameters/ResourceId'
+    put:
+      security:
+        - JWT: [ ]
+      tags:
+        - Pariwar
+      operationId: updatePariwarId
+      summary: to update pariwar
+      requestBody:
+        content:
+          application/json; charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/PariwarBase'
+      responses:
+        '200':
+          description:  Update pariwar object
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/PariwarList'
+    delete:
+      security:
+        - JWT: [ ]
+      tags:
+        - Pariwar
+      operationId: deletePariwarById
+      summary: to delete pariwar by id
+      responses:
+        '200':
+          description: ok
+  /pariwar/{pariwarId}/roles:
+    parameters:
+      - $ref: '#/components/parameters/pariwarId'
+    get:
+      security:
+        - JWT: [ ]
+      tags:
+        - PariwarRoles
+      operationId: roles in pariwar
+      summary: roles in pariwar
+      responses:
+        '200':
+          description: Get role
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/PariwarRoleList'
+    post:
+      security:
+        - JWT: [ ]
+      tags:
+        - PariwarRoles 
+      operationId: createCustomer
+      summary: to create a customer 
+      requestBody:
+        content:
+          application/json; charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/PariwarRoleBase'
+      responses:
+        '200':
+          description: create role
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/PariwarRole'
+  /pariwar/{pariwarId}/nimta:
+    parameters:
+      - $ref: '#/components/parameters/PariwarId'
+    get:
+      security:
+        - JWT: [ ]
+      tags:
+        - Nimta
+      operationId: getNimtaList
+      summary: to get a list of all nimta
+      responses:
+        '200':
+          description: Get nimta list
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/NimtaList'
+    post:
+      security:
+        - JWT: [ ]
+      tags:
+        - Nimta
+      operationId:  createNimta  
+      summary:  to create a nimta
+      requestBody:
+        content:
+          application/json; charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/NimtaBase'
+      responses:
+        '200':
+          description: create nimta
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Nimta'
+  /pariwar/{pariwarId}/nimta/{id}:
+    parameters:
+      - $ref: '#/components/parameters/PariwarId'
+      - $ref: '#/components/parameters/ResourceId'
+    put:
+      security:
+        - JWT: [ ]
+      tags:
+        - Nimta
+      operationId: updateNimta
+      summary: to update a nimta
+      requestBody:
+        content:
+          application/json; charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/NimtaBase'
+      responses:
+        '200':
+          description: update nimta
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Nimta'
+    delete:
+      security:
+        - JWT: [ ]
+      tags:
+        - Nimta
+      operationId: deleteNimta
+      summary: to delete a nimta
+      responses:
+        '200':
+          description: ok
+  /pariwar/{pariwarId}/nimta/{id}/addRelative:
+    parameters:
+      - $ref: '#/components/parameters/PariwarId'
+      - $ref: '#/components/parameters/ResourceId'
+    post:
+      security:
+        - JWT: [ ]
+      tags:
+        - Nimta
+      operationId: addRelative
+      summary: to add relative in nimta
+      requestBody:
+        content:
+          application/json; charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/AddRelative'
+      responses:
+        '200':
+          description: ok
+  /pariwar/{pariwarId}/relative:
+    parameters:
+      - $ref: '#/components/parameters/PariwarId'
+    get:
+      security:
+        - JWT: [ ]
+      tags:
+        - Relative
+      operationId: getrelativeList
+      summary: to get relative
+      responses:
+        '200':
+          description: Get relative list
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/RelativeList'
+    post:
+      security:
+        - JWT: [ ]
+      tags:
+        - Relative
+      operationId:  createrelative
+      summary:   to create a relative
+      requestBody:
+        content:
+          application/json; charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/RelativeBase'
+      responses:
+        '200':
+          description: create relative
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Relative'
+  /pariwar/{pariwarId}/relative/{id}:
+    parameters:
+      - $ref: '#/components/parameters/PariwarId'
+      - $ref: '#/components/parameters/ResourceId'
+    put:
+      security:
+        - JWT: [ ]
+      tags:
+        - Relative
+      operationId: updaterelative  
+      summary: to update relative
+      requestBody:
+        content:
+          application/json; charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/RelativeBase'
+      responses:
+        '200':
+          description: update relative
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Relative'
+    delete:
+      security:
+        - JWT: [ ]
+      tags:
+        - Relative
+      operationId: deleterelative
+      summary: to delete relative
+      responses:
+        '200':
+          description: ok
+  /customer:
+    parameters:
+      - $ref: '#/components/parameters/Email'
+    get:
+      security:
+        - JWT: [ ]
+      tags:
+        - Customer
+      operationId: getCustomer
+      summary: to find a customer
+      responses:
+        '200':
+          description: Get customer
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/CustomerList'              
+
+components:
+  parameters:
+    SearchBy:
+      description: text for search
+      in: query
+      name: 'searchBy'
+      schema:
+        type: string
+        example: godara64022@gmail.com
+    Email:
+      description: email for search
+      in: query
+      name: 'email'
+      schema:
+        type: string
+        example: godara64022@gmail.com
+    PariwarId:
+      required: true
+      description: id of pariwar to be worked on 
+      in: path 
+      name: 'pariwarId'
+      schema:
+        type: string
+        example: adasdas-dwqd3-fcsd-dwedd
+    ResourceId:
+      required: true
+      description: Id of the resource to be worked on
+      in: path
+      name: 'id'
+      schema:
+        type: string
+        example: adasdas-dwqd3-fcsd-dwedd
+    BhaaiId:
+      required: true
+      description: Id of bhaai we worked oen
+      in: path
+      name: 'bhaaiId'
+      schema:
+        type: string
+        example: adasdas-dwqd3-fcsd-dwedd
+    FirstName:
+      description: Name for search
+      in: query
+      name: 'firstName'
+      schema:
+        type: string
+        example: shubham
+    LastName:
+      description: Last name for search
+      in: query
+      name: 'lastName'
+      schema:
+        type: string
+        example: godara    
+    FathersName:
+      description: Father name for search
+      in: query
+      name: 'fatherName'
+      schema:
+        type: string
+        example: sh. bhagwan dass
+    Address:
+      description: Address for search
+      in: query
+      name: 'address'
+      schema:
+        type: string
+        example: mp rohi
+    NickName:
+      description: NickName for search
+      in: query
+      name: 'nickName'
+      schema:
+        type: string
+        example: gholio bro
+    Total:
+      description: Get total baan in bhaai
+      in: query
+      name: 'total'
+      schema: 
+        type: number
+        example: 1
+  schemas:
+    AddRelative:
+      type: object
+      properties:
+        relativeIds:
+          type: array
+          items:
+            type: string
+            example: aaaa-bbbb-cccc-dddd
+        baanIds:
+          type: array
+          items:
+            type: string
+            example: aaaa-bbbb-cccc-dddd
+      required:
+        - relativeIds
+        - baanIds
+      additionalProperties: false
+
+    PariwarBase:
+      type: object
+      properties:
+        name:
+          type: string
+          example: shubham
+      required:
+        - name
+      additionalProperties: false
+    RelativeBase:
+      type: object
+      additionalProperties: false
+      properties:
+        firstName:
+          type: string
+          example: shubham
+        lastName:
+          type: string
+          example: godara  
+        fathersName:
+          type: string
+          example: bhagwan dass
+        address:
+          type: string
+          example: mp rohi
+        nickName:
+          type: string
+          example: gholio 
+        phoneNumber:
+          type: number
+          example: 12345 
+        details:
+          type: string
+          example: mp rohi
+        assignTo:
+          type: string
+          example: gholio 
+      required:
+        -  firstName
+        -  lastName 
+        -  fathersName
+        -  address
+        -  nickName
+        -  phoneNumber
+        -  details
+        -  assignTo
+    NimtaBase:
+      type: object 
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+          example: shubham
+        relative:
+          type: array
+          items:
+            type: string
+            example: brother
+      required:
+        - name
+        - relative
+    PariwarRoleBase:
+      type: object
+      additionalProperties: false
+      properties:
+        role:
+          type: string
+          example: brother
+        customerId:
+          type: string
+          example: aaas-ssss-dddd-dddd
+      required:
+        - role 
+        - CustomerId   
+    Pariwar:
+      type: object
+      additionalProperties: false
+      allOf:
+        - $ref: '#/components/schemas/PariwarBase'
+      properties:
+        _id:
+          type: string
+          example: aaas-ssss-dddd-dddd
+      required:
+        - _id
+    Nimta:
+      type: object
+      additionalProperties: false
+      allOf:
+        - $ref: '#/components/schemas/NimtaBase'
+      properties:
+        _id:
+          type: string
+          example: aaas-ssss-dddd-dddd
+      required:
+        - _id
+    Relative:
+      type: object
+      additionalProperties: false
+      allOf:
+        - $ref: '#/components/schemas/RelativeBase'
+      properties:
+        _id:
+          type: string
+          example: aaas-ssss-dddd-dddd
+        pariwarId:
+          type: string
+          example: aaaa-bbbb-cccc-dddd
+      required:
+        - _id
+        - pariwarId
+    PariwarRole:
+      type: object
+      additionalProperties: false
+      allOf:
+        - $ref: '#/components/schemas/PariwarRoleBase'
+      properties:
+        _id:
+          type: string
+          example: aaas-ssss-dddd-dddd
+        pariwarId:
+          type: string
+          example: aaaa-bbbb-cccc-dddd
+      required:
+        - _id
+        - pariwarId
+    PariwarList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Pariwar'
+    RelativeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Relative'
+    PariwarRoleList:
+      type: array
+      items:
+        $ref: '#/components/schemas/PariwarRole'
+    CustomerList:
+      type: array
+      items:
+        $ref: '#/components/schemas/CustomerBase'
+    NimtaList:
+      type: array
+      items: 
+        $ref: '#/components/schemas/NimtaBase'
+
+    CustomerBase:
+      type: object
+      properties:
+        email:
+          type: string
+          example: rahul@gmail.com
+        phoneNumber:
+          type: string
+          example: +919416061874
+        password:
+          type: string
+          example: dksjfscsf
+      additionalProperties: false
+      required:
+        - email
+        - password
+    AccessToken:
+      type: object
+      properties:
+        access_token:
+          type: string
+          example: sdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsfsd
+      additionalProperties: false
+      required:
+        - access_token
+    Customer:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/CustomerBase'
+      properties:
+        _id:
+          type: string
+          example: daasda-dsa-das-das
+      additionalProperties: false
+      required:
+        - _id
+    BhaaiList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Bhaai'
+    BhaaiTotal:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/Bhaai'
+      properties:
+        total:
+          type: number
+          example: 50000000
+      additionalProperties: false
+    Bhaai:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/BhaaiBase'
+      properties:
+        _id:
+          type: string
+          format: uuid
+          example: fsdfsdf-fsdfsdf-sdfsdf-fsdf3
+      required:
+        - _id
+      additionalProperties: false
+    BhaaiBase:
+      type: object
+      properties:
+        marriage:
+          type: string
+          example: 'Rankit weds deepakshi'
+        date:
+          type: string
+          example: "23:02:2022T09:09:45Z"
+      required:
+        - marriage
+        - date
+      additionalProperties: false
+    BaanList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Baan'
+    BaanBase:
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: shubham
+        lastName:
+          type: string
+          example: godara  
+        fathersName:
+          type: string
+          example: bhagwan dass
+        address:
+          type: string
+          example: mp rohi
+        nickName:
+          type: string
+          example: gholio 
+        amount:
+          type: number
+          example: 12345 
+      required:
+        -  firstName
+        -  lastName 
+        -  fathersName
+        -  address
+        -  nickName
+        -  amount
+      additionalProperties: false 
+    Baan:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/BaanBase'
+      properties:
+        _id:
+          type: string
+          format: uuid
+          example: fsdfsdf-fsdfsdf-sdfsdf-fsdf3
+        BhaaiId:
+          type: string
+          format: uuid
+          example: addf-dddfg-hhjj-hhjk
+      required:
+        - _id
+        - bhaaiId
+      additionalProperties: false
+    GiveBaan:
+      type: object
+      properties:
+        baanId:
+          type: string
+          format: uuid
+          example: fsdfsdf-fsdfsdf-sdfsdf-fsdf3
+        amount:
+          type: number
+          example: 12345 
+      required:
+        - baanId
+        - amount
+      additionalProperties: false
+  securitySchemes:
+    JWT:
+      bearerFormat: JWT
+      description: authantication
+      scheme: bearer
+      type: http
