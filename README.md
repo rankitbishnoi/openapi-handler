@@ -1,8 +1,6 @@
 
 # Openapi-handler
 
-Persist and rehydrate a redux store.
-
 [![npm version](https://img.shields.io/npm/v/openapi-handler.svg?style=flat-square)](https://www.npmjs.com/package/openapi-handler) [![npm downloads](https://img.shields.io/npm/dm/openapi-handler.svg?style=flat-square)](https://www.npmjs.com/package/openapi-handler)
 
 ## Quickstart

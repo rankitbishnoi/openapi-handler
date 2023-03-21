@@ -1,6 +1,6 @@
 {
   "name": "openapi-handler",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "Create, mock and validate APIs using Open API YML or JSON Schemas",
   "main": "dist/index.js",
   "scripts": {
@@ -18,6 +18,23 @@
   "bin": {
     "generate-schemas": "dist/cli.js"
   },
+  "keywords": [
+    "swagger",
+    "typescript",
+    "ts",
+    "dts",
+    "openapi",
+    "codegen",
+    "generation",
+    "openapi 3",
+    "expressjs",
+    "express",
+    "request validation",
+    "response validation",
+    "middleware",
+    "nodejs",
+    "node"
+  ],
   "author": "Rankit",
   "license": "ISC",
   "dependencies": {
